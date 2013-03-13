@@ -9,6 +9,11 @@ class Cliente extends Eloquent {
         'rfc' => 'required|min:12|max:13'
     ); 
 
+
+    public function contactos(){
+        return $this->has_many('Contacto');
+    }
+
     public static function validate($data){
         return Validator::make($data, static::$rules);
     }

@@ -1,11 +1,13 @@
 @layout('layouts.default')
 
 @section('content')
+    <section class="container">
+
     <h1>Capturar Cliente</h1>
 
     <section class="input">
 
-    {{ Form::open('csectionentes/create','POST', array('class' => 'form-horizontal')) }}
+    {{ Form::open('clientes/create','POST', array('class' => 'form-horizontal')) }}
     {{ Form::token() }} 
     
     <?php
@@ -20,7 +22,7 @@
      
     ?>
 
-            <span class="legend">Raz&oacute;n social</span>
+            <h5>Raz&oacute;n social</h5>
         
         <section class="control-group">
             {{ Form::bs_label('rfc', 'RFC') }}
@@ -37,7 +39,7 @@
             </section>
         </section>
 
-            <span class="legend">Domicilio</span>
+            <h5>Domicilio</h5>
 
         <section class="control-group">
             {{ Form::bs_label('calle', 'Calle') }}
@@ -63,28 +65,28 @@
         <section class="control-group">
             {{ Form::bs_label('colonia', 'Colonia') }}
             <section class="controls">
-                {{ Form::bs_text_xxl('colonia') }}
+                {{ Form::bs_text_xxl('colonia', Input::old('colonia'), array('placeholder' => 'opcional')) }}
             </section>
         </section>
 
         <section class="control-group">
             {{ Form::bs_label('localidad', 'Localidad') }}
             <section class="controls">
-                {{ Form::text('localidad') }}
+                {{ Form::text('localidad', Input::old('localidad'), array('placeholder' => 'opcional')) }}
             </section>
         </section>
 
         <section class="control-group">
             {{ Form::bs_label('referencia', 'Referencia') }}
             <section class="controls">
-                {{ Form::text('referencia') }}
+                {{ Form::bs_text_xxl('referencia', Input::old('referencia'), array('placeholder' => 'opcional')) }}
             </section>
         </section>
     
         <section class="control-group">
             {{ Form::bs_label('municipio', 'Municipio') }}
             <section class="controls">
-                {{ Form::text('municipio') }}
+                {{ Form::text('municipio', Input::old('municipio'), array('placeholder' => 'opcional')) }}
             </section>
         </section>
 
@@ -115,13 +117,17 @@
                 {{ Form::checkbox('activo','1', false) }}
             </section>
         </section>
-
+        
         <section class="control-group">
-        {{ Form::submit('Capturar', array('class' => 'btn')) }}
+            <section class="controls">
+                {{ Form::submit('Capturar', array('class' => 'btn')) }}
+            </section>
         </section>
         
     </ul>
     {{ Form::close() }}
+
+    </section>
 
     </section>
 @endsection

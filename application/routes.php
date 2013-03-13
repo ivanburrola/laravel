@@ -43,7 +43,9 @@ Clientes
 //Route::controller('clientes');
 Route::get('clientes', array('as' => 'clientes', 'uses' => 'clientes@index'));
 Route::get('clientes/new', array('as'=> 'new_cliente', 'uses' => 'clientes@new'));
-Route::post('clientes/create', array('before' => 'csrf','uses'=>'clientes@create'));
+Route::post('clientes/create', array('before' => 'csrf','uses' => 'clientes@create'));
+Route::get('cliente/(:num)', array('as' => 'cliente', 'uses' => 'clientes@view'));
+Route::get('cliente/(:num)/edit', array('as' =>'edit_cliente', 'uses' => 'clientes@edit'));
 
 Route::get('authors', array('as'=> 'authors', 'uses'=>'authors@index'));
 Route::get('author/(:any)', array('as' => 'author', 'uses' => 'authors@view'));

@@ -6,8 +6,16 @@
     {{ HTML::style('css/application.css') }}
 </head>
 <body>
+    <section class="navbar">
+        <nav class="navbar-inner">
+            <ul class="nav">
+                <li>{{ HTML::link_to_route('clientes','Clientes') }}</li>
+                <li><a href="#">Tickets</a></li>
+            </ul>
+        </nav>
+    </section>
     @if(Session::has('message'))
-        <p style="color: green;">{{ Session::get('message') }}</p>
+        <p class="alert alert-success">{{ Session::get('message') }}</p>
     @endif
 
     @yield('content')

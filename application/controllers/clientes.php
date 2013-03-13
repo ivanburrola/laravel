@@ -8,7 +8,8 @@ class Clientes_Controller extends Base_Controller
     {
         return View::make('clientes.index')
             ->with('title','Clientes')
-            ->with('clientes', Cliente::all());
+            ->with('clientes', Cliente::all())
+            ->with('total', Cliente::count());
     }
 
     public function get_new()
@@ -32,6 +33,12 @@ class Clientes_Controller extends Base_Controller
             return Redirect::to_route('clientes')
                 ->with('message', 'El cliente fue capturado exitosamente');
         }
+    }
+
+    public function get_view($id){
+         return View::make('clientes.view')
+            ->with('title', 'Cliente')
+            ->with('cliente', Cliente::find($id));
     }
     
 }
