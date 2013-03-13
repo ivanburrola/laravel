@@ -7,89 +7,116 @@
 
     {{ Form::open('csectionentes/create','POST', array('class' => 'form-horizontal')) }}
     {{ Form::token() }} 
-       
+    
+    <?php
+        Form::macro('bs_label', function($name, $value){
+            return '<label for="' . $name . '" class="control-label">' . $value . '</label>';
+        });
+        
+        Form::macro('bs_text_xxl', function($name, $value = null, $attributes = array()){
+            $attributes['class'] = 'input-xxlarge';
+            return Form::text($name, $value, $attributes);
+        });
+     
+    ?>
+
             <span class="legend">Raz&oacute;n social</span>
         
         <section class="control-group">
-            {{ Form::label('rfc', 'RFC', array('class' => 'control-label')) }}
+            {{ Form::bs_label('rfc', 'RFC') }}
             <section class="controls">
-                {{ Form::text('rfc') }}
+                {{ Form::text('rfc',Input::old('rfc'), array('placeholder' => 'requerido')) }}
             </section>
         </section>
         
 
         <section class="control-group">
-        {{ Form::label('nombre', 'Nombre' , array('class' => 'control-label')) }}
+        {{ Form::bs_label('nombre', 'Nombre') }}
             <section class="controls">
-                {{ Form::text('nombre') }}
+                {{ Form::bs_text_xxl('nombre', Input::old('nombre'), array('placeholder' => 'opcional')) }}
             </section>
         </section>
 
             <span class="legend">Domicilio</span>
 
         <section class="control-group">
-            {{ Form::label('calle', 'Calle' , array('class' => 'control-label')) }}
+            {{ Form::bs_label('calle', 'Calle') }}
             <section class="controls">
-                {{ Form::text('calle') }}
+                {{ Form::bs_text_xxl('calle', Input::old('calle'), array('placeholder' => 'opcional')) }}
             </section>
         </section>
 
         <section class="control-group">
-            {{ Form::label('no_exterior', 'No. Exterior') }}
+            {{ Form::bs_label('no_exterior', 'No. Exterior') }}
             <section class="controls">
-                {{ Form::text('no_exterior') }}
+                {{ Form::text('no_exterior', Input::old('no_exterior'), array('placeholder' => 'opcional')) }}
             </section>
         </section>
 
         <section class="control-group">
-            {{ Form::label('no_interior', 'No. Interior') }}
+            {{ Form::bs_label('no_interior', 'No. Interior') }}
             <section class="controls">
-                {{ Form::text('no_interior') }}
+                {{ Form::text('no_interior', Input::old('no_interior'), array('placeholder' => 'opcional')) }}
             </section>
         </section>
 
         <section class="control-group">
-        {{ Form::label('colonia', 'Colonia') }}
+            {{ Form::bs_label('colonia', 'Colonia') }}
             <section class="controls">
-                {{ Form::text('colonia') }}
+                {{ Form::bs_text_xxl('colonia') }}
             </section>
         </section>
 
         <section class="control-group">
-        {{ Form::label('localidad', 'Localidad') }}
-        {{ Form::text('localidad') }}
+            {{ Form::bs_label('localidad', 'Localidad') }}
+            <section class="controls">
+                {{ Form::text('localidad') }}
+            </section>
         </section>
 
         <section class="control-group">
-        {{ Form::label('referencia', 'Referencia') }}
-        {{ Form::text('referencia') }}
+            {{ Form::bs_label('referencia', 'Referencia') }}
+            <section class="controls">
+                {{ Form::text('referencia') }}
+            </section>
         </section>
     
         <section class="control-group">
-        {{ Form::label('municipio', 'Municipio') }}
-        {{ Form::text('municipio') }}
+            {{ Form::bs_label('municipio', 'Municipio') }}
+            <section class="controls">
+                {{ Form::text('municipio') }}
+            </section>
         </section>
 
         <section class="control-group">
-        {{ Form::label('estado', 'Estado') }}
-        {{ Form::text('estado') }}
+            {{ Form::bs_label('estado', 'Estado') }}
+            <section class="controls">
+                {{ Form::text('estado', Input::old('estado'), array('placeholder' => 'opcional')) }}
+            </section>
         </section>
 
         <section class="control-group">
-        {{ Form::label('pais','Pais') }}
-        {{ Form::text('pais') }}
+            {{ Form::bs_label('pais','Pais') }}
+            <section class="controls">
+                {{ Form::text('pais', Input::old('pais'), array('placeholder' => 'requerido')) }}
+            </section>
+        </section>
+
+        <section class="control-group">            
+            {{ Form::bs_label('codigo_postal', 'Codigo Postal') }}
+            <section class="controls">
+                {{ Form::text('codigo_postal', Input::old('codigo_postal'), array('placeholder' => 'opcional')) }}
+            </section>
         </section>
 
         <section class="control-group">
-        {{ Form::label('codigo_postal', 'Codigo Postal') }}
-        {{ Form::text('codigo_postal') }}
+            {{ Form::bs_label('activo', 'Activo') }}
+            <section class="controls">
+                {{ Form::checkbox('activo','1', false) }}
+            </section>
         </section>
 
         <section class="control-group">
-        {{ Form::label('activo', 'Activo') }}
-        {{ Form::checkbox('activo','1', false) }}
-        </section>
-        <section>
         {{ Form::submit('Capturar', array('class' => 'btn')) }}
         </section>
         
