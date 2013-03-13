@@ -1,0 +1,16 @@
+body{
+    font-family:sans-serif;
+}
+
+a{
+    text-decoration:none;
+}
+p{
+    font-size: .9em;
+    background-color: #e8e8e8;
+}
+
+p > a{
+    width: 30px;
+    font-weight: bold;
+}
